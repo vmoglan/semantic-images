@@ -5,11 +5,8 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages", "SemanticImages\SemanticImages.csproj", "{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}"
 EndProject
-<<<<<<< HEAD
-=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.Tests", "SemanticImages.Tests\SemanticImages.Tests.csproj", "{0C45A195-F39E-4500-82BC-B9848FF9EDAE}"
 EndProject
->>>>>>> image-proc
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,13 +17,10 @@ Global
 		{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
-=======
 		{0C45A195-F39E-4500-82BC-B9848FF9EDAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C45A195-F39E-4500-82BC-B9848FF9EDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C45A195-F39E-4500-82BC-B9848FF9EDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C45A195-F39E-4500-82BC-B9848FF9EDAE}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> image-proc
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
