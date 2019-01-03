@@ -2,10 +2,10 @@
 using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SemanticImages.Tests.ImageProcessing
+namespace SemanticImages.Tests
 {
     [TestClass]
-    public class ResizerTests
+    public class ImageUtilsTests
     {
         private const int INITIAL_WIDTH = 1024;
         private const int INITIAL_HEIGHT = 768;
