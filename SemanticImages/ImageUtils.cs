@@ -60,5 +60,72 @@ namespace SemanticImages
 
             return Resize(image, (int) (Math.Floor(image.Width * scale)), (int) (Math.Floor(image.Height * scale)));
         }
+
+        /// <summary>
+        /// Crops an image.
+        /// </summary>
+        /// <param name="image">is the image to be cropped</param>
+        /// <param name="x">is the x coordinate of the upper left bound of the crop rectangle</param>
+        /// <param name="y">is the y coordinate of the upper left bound of the crop rectangle</param>
+        /// <param name="width">is the width of the crop rectangle</param>
+        /// <param name="height">is the height of the crop rectangle</param>
+        /// <returns>the cropped image</returns>
+        public static Bitmap Crop(Image image, int x, int y, int width, int height)
+        {
+            Rectangle r = new Rectangle(x, y, width, height);
+
+            if (!validateCropBounds(r, image))
+            {
+                throw new ArgumentException("Crop coordinates out of bounds.");
+            }
+
+            Bitmap cropped = new Bitmap(r.Width, r.Height);
+
+            using (var graphics = Graphics.FromImage(cropped))
+            {
+                graphics.DrawImage(image, new Rectangle(0, 0, r.Width, r.Height), r, GraphicsUnit.Pixel);
+            }
+
+            return cropped;
+        }
+
+        /// <summary>
+        /// Crops an image.
+        /// </summary>
+        /// <param name="image">is the image to be cropped</param>
+        /// <param name="r">is the crop rectangle</param>
+        /// <returns>the cropped image</returns>
+        public static Bitmap Crop(Image image, Rectangle r)
+        {
+            return Crop(image, r.X, r.Y, r.Width, r.Height);
+        }
+
+        private static bool validateCropBounds(Rectangle r, Image image)
+        {
+            Point min = new Point(r.X, r.Y);
+            Point max = new Point(r.X + r.Width, r.Y + r.Height);
+
+            if (min.X < 0 || min.X > image.Width)
+            {
+                return false;
+            }
+            
+            if (min.Y < 0 || min.Y > image.Height)
+            {
+                return false;
+            }
+
+            if (max.X < 0 || max.X > image.Width)
+            {
+                return false;
+            }
+
+            if (max.Y < 0 || max.Y > image.Height)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
