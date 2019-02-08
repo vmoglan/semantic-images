@@ -1,20 +1,20 @@
-﻿using SemanticImages;
-using SemanticImages.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 
-namespace SemanticBitmaps.View
+namespace SemanticImages.View
 {
     /// <summary>
     /// Singleton controller class for an image, object of processing operations within the app; calls image processing
-    /// operation and notifies listeners.
+    /// operation and notifies observers.
     /// </summary>
     class ImageHandler : IObservable<Bitmap>
     {
         private static ImageHandler _instance = null;
         private readonly List<IObserver<Bitmap>> _observers;
+        private string _activePath;
         private readonly Stack<Bitmap> _history;
 
         private ImageHandler()
@@ -36,14 +36,19 @@ namespace SemanticBitmaps.View
             if (!_observers.Contains(observer))
             {
                 _observers.Add(observer);
-                observer.OnNext(_history.Peek());
+
+                if (_history.Count > 0)
+                    observer.OnNext(_history.Peek());
+
+                else
+                    observer.OnNext(null);
             }
 
             return new Unsubscriber<Bitmap>(_observers, observer);
         }
 
         /// <summary>
-        /// Notifies the listeners of a change in the image history.
+        /// Notifies the observers of a change in the image history.
         /// </summary>
         /// <param name="image">is the instance containing the modified image</param>
         private void NotifyNext()
@@ -53,7 +58,7 @@ namespace SemanticBitmaps.View
         }
 
         /// <summary>
-        /// Notifies the listeners of an error having occured during the processing of the
+        /// Notifies the observers of an error having occured during the processing of the
         /// image.
         /// </summary>
         /// <param name="e">is the exception thrown during the processing of an image</param>
@@ -62,18 +67,25 @@ namespace SemanticBitmaps.View
             foreach (var observer in _observers)
                 observer.OnError(e);
         }
+        
+        public Bitmap LastModification
+        {
+            get { return _history.Peek(); }
+            private set { }
+        }
 
         /// <summary>
         /// Clears the modification history of the previously loaded image and reads the new image from the given path.
         /// </summary>
         /// <param name="path">is the path of the image to be loaded</param>
-        public void Load(String path)
+        public void Load(string path)
         {
             _history.Clear();
 
             try
             {
                 _history.Push(ImageUtils.BytesToImage(File.ReadAllBytes(path)));
+                _activePath = path;
                 NotifyNext();
             }
             
@@ -84,7 +96,7 @@ namespace SemanticBitmaps.View
         }
 
         /// <summary>
-        /// Calls the image resize method on the last modification of the loaded image and notifies listeners.
+        /// Calls the image resize method on the last modification of the loaded image and notifies observers.
         /// </summary>
         /// <param name="width">is the new width of the image</param>
         /// <param name="height">is the new height of the image</param>
@@ -103,7 +115,7 @@ namespace SemanticBitmaps.View
         }
 
         /// <summary>
-        /// Scales the last modification of the loaded image and notifies listeners.
+        /// Scales the last modification of the loaded image and notifies observers.
         /// </summary>
         /// <param name="scale">is the factor by which the image is scaled</param>
         public void Resize(float scale)
@@ -121,7 +133,7 @@ namespace SemanticBitmaps.View
         }
 
         /// <summary>
-        /// Crops the last modification of the loaded image and notifies listeners.
+        /// Crops the last modification of the loaded image and notifies observers.
         /// </summary>
         /// <param name="r">is the rectangle used for cropping the image</param>
         public void Crop(Rectangle r)
@@ -163,11 +175,45 @@ namespace SemanticBitmaps.View
 
             NotifyNext();
         }
-        
-        /// <returns>the number of modifications performed on an image</returns>
-        public int HistoryCount()
+
+        /// <summary>
+        /// Saves the last modification to the active path in the original format given by that path.
+        /// </summary>
+        public void Save()
         {
-            return _history.Count;
+            try
+            {
+                ImageFormat format = ImageUtils.GetImageFormat(_activePath);
+
+                _history.Peek().Save(_activePath, format);
+                NotifyNext();
+            }
+
+            catch (Exception e)
+            {
+                NotifyError(e);
+            }
+        }
+
+        /// <summary>
+        /// Saves the last modification to a path using the format of that path.
+        /// </summary>
+        /// <param name="path">is the path to output the last modification to</param>
+        public void SaveAs(string path)
+        {
+            try
+            {
+                ImageFormat format = ImageUtils.GetImageFormat(path);
+
+                _history.Peek().Save(path, format);
+                _activePath = path;
+                NotifyNext();
+            }
+
+            catch (Exception e)
+            {
+                NotifyError(e);
+            }
         }
     }
 }

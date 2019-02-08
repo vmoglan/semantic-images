@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace SemanticImages.View
 {
+    /// <summary>
+    /// Allows an Bitmap observer to unsubscribe from an observable.
+    /// </summary>
+    /// <typeparam name="Bitmap">defines the type of unsubscriber</typeparam>
     class Unsubscriber<Bitmap> : IDisposable
     {
         private readonly List<IObserver<Bitmap>> _observers;

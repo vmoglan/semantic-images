@@ -115,6 +115,35 @@ namespace SemanticImages
         }
 
         /// <summary>
+        /// Given the path to an image, determines the corresponding image format.
+        /// </summary>
+        /// <param name="path">is a path to an image</param>
+        /// <returns>the image format</returns>
+        public static ImageFormat GetImageFormat(string path)
+        {
+            string formatStr = Path.GetExtension(path).Replace(".", "");
+            ImageFormat format = null;
+
+            switch (formatStr.ToLower())
+            {
+                case "jpg":
+                case "jpeg":
+                    format = ImageFormat.Jpeg;
+                    break;
+                case "png":
+                    format = ImageFormat.Png;
+                    break;
+                case "bmp":
+                    format = ImageFormat.Bmp;
+                    break;
+                default:
+                    throw new ArgumentException("Not a path to an image.");
+            }
+
+            return format;
+        }
+
+        /// <summary>
         /// Validates the bounds of a rectangle for cropping 
         /// </summary>
         /// <param name="r"></param>
