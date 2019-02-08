@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace SemanticImages
 {
@@ -98,6 +99,19 @@ namespace SemanticImages
             }
 
             return cropped;
+        }
+
+        /// <summary>
+        /// Converts an array of bytes into a bitmap image.
+        /// </summary>
+        /// <param name="bytes">the array of bytes containing image information</param>
+        /// <returns>the bitmap generated from the array of bytes</returns>
+        public static Bitmap BytesToImage(byte[] bytes)
+        {
+            MemoryStream ms = new MemoryStream(bytes);
+            Image image = Image.FromStream(ms, false, true);
+
+            return new Bitmap(image);
         }
 
         /// <summary>
