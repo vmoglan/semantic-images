@@ -74,7 +74,18 @@ namespace SemanticImages
         {
             Rectangle r = new Rectangle(x, y, width, height);
 
-            if (!validateCropBounds(r, image))
+            return Crop(image, r);
+        }
+
+        /// <summary>
+        /// Crops an image.
+        /// </summary>
+        /// <param name="image">is the image to be cropped</param>
+        /// <param name="r">is the crop rectangle</param>
+        /// <returns>the cropped image</returns>
+        public static Bitmap Crop(Image image, Rectangle r)
+        {
+            if (!ValidateCropBounds(r, image))
             {
                 throw new ArgumentException("Crop coordinates out of bounds.");
             }
@@ -90,40 +101,27 @@ namespace SemanticImages
         }
 
         /// <summary>
-        /// Crops an image.
+        /// Validates the bounds of a rectangle for cropping 
         /// </summary>
-        /// <param name="image">is the image to be cropped</param>
-        /// <param name="r">is the crop rectangle</param>
-        /// <returns>the cropped image</returns>
-        public static Bitmap Crop(Image image, Rectangle r)
-        {
-            return Crop(image, r.X, r.Y, r.Width, r.Height);
-        }
-
-        private static bool validateCropBounds(Rectangle r, Image image)
+        /// <param name="r"></param>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        private static bool ValidateCropBounds(Rectangle r, Image image)
         {
             Point min = new Point(r.X, r.Y);
             Point max = new Point(r.X + r.Width, r.Y + r.Height);
 
             if (min.X < 0 || min.X > image.Width)
-            {
                 return false;
-            }
             
             if (min.Y < 0 || min.Y > image.Height)
-            {
                 return false;
-            }
 
             if (max.X < 0 || max.X > image.Width)
-            {
                 return false;
-            }
 
             if (max.Y < 0 || max.Y > image.Height)
-            {
                 return false;
-            }
 
             return true;
         }
