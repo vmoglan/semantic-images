@@ -1,4 +1,4 @@
-# semantic-images
+# Semantic Images
 ![Tag](https://img.shields.io/badge/tag-v0.0.1-blue.svg)
 
 
