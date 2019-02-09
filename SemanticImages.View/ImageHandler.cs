@@ -17,6 +17,11 @@ namespace SemanticImages.View
         private string _activePath;
         private readonly Stack<Bitmap> _history;
 
+        public int HistoryCount
+        {
+            get { return _history.Count; }
+        }
+
         private ImageHandler()
         {
             _observers = new List<IObserver<Bitmap>>();

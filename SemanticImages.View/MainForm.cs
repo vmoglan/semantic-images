@@ -88,10 +88,7 @@ namespace SemanticImages.View
 
         private void ResizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form = new ImageResizeForm
-            {
-                Owner = this
-            };
+            Form form = new ImageResizeForm(this);
 
             form.Show();
         }
@@ -103,12 +100,25 @@ namespace SemanticImages.View
 
         private void UndoAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _imageHandler.UndoAll();
+            DialogResult dr = MessageBox.Show("Undo all changes? This operation is irreversible.", "Warning",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dr == DialogResult.Yes)
+            {
+                _imageHandler.UndoAll();
+            }
         }
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void CropToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new ImageCropForm(this, (Bitmap) MainPictureBox.Image.Clone());
+
+            form.Show();
         }
     }
 }

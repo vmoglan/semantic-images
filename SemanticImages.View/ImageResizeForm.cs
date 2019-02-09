@@ -8,12 +8,13 @@ namespace SemanticImages.View
     {
         private ImageHandler _imageHandler;
 
-        public ImageResizeForm()
+        public ImageResizeForm(Form parent)
         {
             InitializeComponent();
 
             _imageHandler = ImageHandler.GetInstance();
             ResizeTypeCheckBox.Checked = true;
+            Owner = parent;
         }
 
         private void ImageResizeForm_Load(object sender, EventArgs e)

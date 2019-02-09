@@ -7,7 +7,7 @@ using System.IO;
 namespace SemanticImages
 {
     /// <summary>
-    /// Used for resizing an image.
+    /// Tools for image processing.
     /// </summary>
     public static class ImageUtils
     {

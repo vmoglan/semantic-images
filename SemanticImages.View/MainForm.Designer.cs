@@ -123,6 +123,7 @@
             this.CropToolStripMenuItem.Name = "CropToolStripMenuItem";
             this.CropToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
             this.CropToolStripMenuItem.Text = "Crop";
+            this.CropToolStripMenuItem.Click += new System.EventHandler(this.CropToolStripMenuItem_Click);
             // 
             // UndoToolStripMenuItem
             // 
