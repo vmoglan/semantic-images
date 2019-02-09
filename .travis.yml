@@ -1,8 +1,0 @@
-language: csharp
-solution: semantic-images.sln
-install:
-  - nuget restore semantic-images.sln
-  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
-script:
-  - msbuild /p:Configuration=Release semantic-images.sln
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./SemanticImages.Tests/bin/Release/SemanticImages.Tests.dll
