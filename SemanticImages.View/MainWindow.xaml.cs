@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SemanticImages.Presentation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace SemanticImages.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindowViewModel ViewModel
+        {
+            get; private set;
+        }
+
+        public MainWindow(MainWindowViewModel viewModel)
         {
             InitializeComponent();
+
+            ViewModel = viewModel;
         }
     }
 }

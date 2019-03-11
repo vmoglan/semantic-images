@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.Core.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.View", "SemanticImages.View\SemanticImages.View.csproj", "{9C7E4AC4-31D2-4203-AC02-F5C98331A211}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.ViewModels", "SemanticImages.ViewModels\SemanticImages.ViewModels.csproj", "{A4A0ADB3-F244-4B6E-BC31-6DB17EE4BD32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.Presentation", "SemanticImages.Presentation\SemanticImages.Presentation.csproj", "{A4A0ADB3-F244-4B6E-BC31-6DB17EE4BD32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -34,9 +34,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SemanticImages.View.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -93,6 +97,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SemanticImages.Core\SemanticImages.Core.csproj">
+      <Project>{b0127e53-ecb9-4a21-b44c-3f1529fcd0a1}</Project>
+      <Name>SemanticImages.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SemanticImages.Presentation\SemanticImages.Presentation.csproj">
+      <Project>{a4a0adb3-f244-4b6e-bc31-6db17ee4bd32}</Project>
+      <Name>SemanticImages.Presentation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

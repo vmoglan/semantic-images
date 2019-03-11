@@ -1,12 +1,29 @@
-﻿<Window x:Class="SemanticImages.View.MainWindow"
+﻿<Window x:Name="Main" x:Class="SemanticImages.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SemanticImages.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="SemIm" Height="450" Width="800"
+        DataContext="{Binding ViewModel}">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+                <MenuItem Header="Save As"/>
+                <MenuItem Header="Quit" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Resize"/>
+                <MenuItem Header="Crop" />
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Undo All" />
+            </MenuItem>
+        </Menu>
+        <StackPanel x:Name="ImageContainer">
+            <Image Height="100" Width="100"/>
+        </StackPanel>
+    </DockPanel>
 </Window>

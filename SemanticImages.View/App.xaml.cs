@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SemanticImages.Core;
+using SemanticImages.Presentation;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,18 @@ namespace SemanticImages.View
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            ComposeObjects();
+            Current.MainWindow.Show();
+        }
+
+        private static void ComposeObjects()
+        {
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+            MainWindow mainWindow = new MainWindow(mainWindowViewModel);
+            Current.MainWindow = mainWindow;
+        }
     }
 }
