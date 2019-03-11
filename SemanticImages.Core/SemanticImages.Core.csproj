@@ -7,8 +7,8 @@
     <ProjectGuid>{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SemanticImages</RootNamespace>
-    <AssemblyName>SemanticImages</AssemblyName>
+    <RootNamespace>SemanticImages.Core</RootNamespace>
+    <AssemblyName>SemanticImages.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

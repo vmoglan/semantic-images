@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SemanticImages
+﻿namespace SemanticImages.Core
 {
     public static class MathUtils
     {
@@ -20,7 +14,6 @@ namespace SemanticImages
             {
                 if (a > b)
                     a %= b;
-
                 else
                     b %= a;
             }

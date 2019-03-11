@@ -2,7 +2,7 @@
 using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace SemanticImages.Tests
+namespace SemanticImages.Core.Tests
 {
     [TestClass]
     public class ImageUtilsTests

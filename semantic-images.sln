@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages", "SemanticImages\SemanticImages.csproj", "{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.Core", "SemanticImages.Core\SemanticImages.Core.csproj", "{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.Tests", "SemanticImages.Tests\SemanticImages.Tests.csproj", "{0C45A195-F39E-4500-82BC-B9848FF9EDAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.Core.Tests", "SemanticImages.Core.Tests\SemanticImages.Core.Tests.csproj", "{0C45A195-F39E-4500-82BC-B9848FF9EDAE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticImages.View", "SemanticImages.View\SemanticImages.View.csproj", "{794FA463-279A-44D1-905D-764BD889855C}"
 EndProject

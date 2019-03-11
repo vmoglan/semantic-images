@@ -115,12 +115,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SemanticImages\SemanticImages.csproj">
-      <Project>{b0127e53-ecb9-4a21-b44c-3f1529fcd0a1}</Project>
-      <Name>SemanticImages</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
@@ -131,6 +125,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SemanticImages.Core\SemanticImages.Core.csproj">
+      <Project>{b0127e53-ecb9-4a21-b44c-3f1529fcd0a1}</Project>
+      <Name>SemanticImages.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

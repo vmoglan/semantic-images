@@ -8,8 +8,8 @@
     <ProjectGuid>{0C45A195-F39E-4500-82BC-B9848FF9EDAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SemanticImages.Tests</RootNamespace>
-    <AssemblyName>SemanticImages.Tests</AssemblyName>
+    <RootNamespace>SemanticImages.Core.Tests</RootNamespace>
+    <AssemblyName>SemanticImages.Core.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -57,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SemanticImages\SemanticImages.csproj">
+    <ProjectReference Include="..\SemanticImages.Core\SemanticImages.Core.csproj">
       <Project>{b0127e53-ecb9-4a21-b44c-3f1529fcd0a1}</Project>
-      <Name>SemanticImages</Name>
+      <Name>SemanticImages.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
