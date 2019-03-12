@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace SemanticImages.Service
 {
-    interface IMessageBoxService
+    public interface IMessageBoxService
     {
-
+        void ShowMessageBox(string message, string title, MessageBoxButton messageBoxButton,
+            MessageBoxImage messageBoxImage, Action<MessageBoxResult> action = null);
     }
 }

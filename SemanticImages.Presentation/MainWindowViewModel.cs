@@ -24,6 +24,7 @@ namespace SemanticImages.Presentation
 
         private readonly OpenFileDialogService _openImageDialogService;
         private readonly SaveFileDialogService _saveImageDialogService;
+        private readonly IMessageBoxService _messageBoxService;
 
         public RelayCommand OpenCommand
         {
@@ -42,10 +43,12 @@ namespace SemanticImages.Presentation
 
         public MainWindowViewModel() { }
 
-        public MainWindowViewModel(OpenFileDialogService openImageDialogService, SaveFileDialogService saveImageDialogService)
+        public MainWindowViewModel(OpenFileDialogService openImageDialogService, 
+            SaveFileDialogService saveImageDialogService, IMessageBoxService messageBoxService)
         {
             _openImageDialogService = openImageDialogService;
             _saveImageDialogService = saveImageDialogService;
+            _messageBoxService = messageBoxService;
             
             InitializeCommands();
         }
@@ -76,7 +79,13 @@ namespace SemanticImages.Presentation
 
         private void OnSaveCommandExecution(object o)
         {
-            ImageModificationManager.LastModification.Save(_imageExportPath);
+            _messageBoxService.ShowMessageBox("This operation will override the currently loaded file.",
+                "Save", System.Windows.MessageBoxButton.OKCancel, System.Windows.MessageBoxImage.Warning,
+                r =>
+                {
+                    if (r == System.Windows.MessageBoxResult.OK)
+                        ImageModificationManager.LastModification.Save(_imageExportPath);
+                });
         }
 
         private void OnSaveAsCommandExecution(object o)

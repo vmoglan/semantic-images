@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMessageBoxService.cs" />
+    <Compile Include="MessageBoxService.cs" />
     <Compile Include="SaveFileDialogService.cs" />
     <Compile Include="IFileDialogService.cs" />
     <Compile Include="OpenFileDialogService.cs" />

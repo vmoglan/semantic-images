@@ -27,7 +27,9 @@ namespace SemanticImages.View
         {
             OpenFileDialogService openImageDialogService = new OpenFileDialogService();
             SaveFileDialogService saveImageDialogService = new SaveFileDialogService();
-            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(openImageDialogService, saveImageDialogService);
+            IMessageBoxService messageBoxService = new MessageBoxService();
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(openImageDialogService, 
+                saveImageDialogService, messageBoxService);
             MainWindow mainWindow = new MainWindow(mainWindowViewModel);
             Current.MainWindow = mainWindow;
         }
