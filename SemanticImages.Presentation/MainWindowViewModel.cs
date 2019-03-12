@@ -2,14 +2,14 @@
 using SemanticImages.Core.IO;
 using SemanticImages.Service;
 using System;
-using System.ComponentModel;
 using System.Drawing;
-using System.IO;
 
 namespace SemanticImages.Presentation
 {
     public class MainWindowViewModel : ViewModel
     {
+        private ImageModificationManager _imageModificationManager;
+
         public ImageModificationManager ImageModificationManager
         {
             get => _imageModificationManager;
@@ -20,10 +20,11 @@ namespace SemanticImages.Presentation
             }
         }
 
-        private readonly OpenImageDialogService _openImageDialogService;
-        private readonly SaveImageDialogService _saveImageDialogService;
-        private ImageModificationManager _imageModificationManager;
-        
+        private string _imageExportPath;
+
+        private readonly OpenFileDialogService _openImageDialogService;
+        private readonly SaveFileDialogService _saveImageDialogService;
+
         public RelayCommand OpenCommand
         {
             get; private set;
@@ -34,33 +35,63 @@ namespace SemanticImages.Presentation
             get; private set;
         }
 
-        public MainWindowViewModel()
+        public RelayCommand SaveAsCommand
         {
-
+            get; private set;
         }
 
-        public MainWindowViewModel(OpenImageDialogService openImageDialogService, SaveImageDialogService saveImageDialogService)
+        public MainWindowViewModel() { }
+
+        public MainWindowViewModel(OpenFileDialogService openImageDialogService, SaveFileDialogService saveImageDialogService)
         {
             _openImageDialogService = openImageDialogService;
             _saveImageDialogService = saveImageDialogService;
-            OpenCommand = new RelayCommand(
-                o => true,
-                o =>
-                {
-                    string path = _openImageDialogService.RetrievePath();
+            
+            InitializeCommands();
+        }
 
-                    if (path != null)
-                    {
-                        ImageReader reader = new ImageReader(path);
+        private void InitializeCommands()
+        {
+            OpenCommand = new RelayCommand(o => true, o => OnOpenCommandExecution(o));
+            SaveCommand = new RelayCommand(o => (ImageModificationManager != null), o => OnSaveCommandExecution(o));
+            SaveAsCommand = new RelayCommand(o => true, o => OnSaveAsCommandExecution(o));
+        }
 
-                        reader.Read();
+        private void OnOpenCommandExecution(object o)
+        {
+            string path = _openImageDialogService.ShowFileDialog("Open", "Image Files|*.jpg;*.jpeg;*.png;*.bmp");
 
-                        Bitmap image = reader.Image;
-                        ImageModificationManager = new ImageModificationManager(image);
-                        RaisePropertyChanged(nameof(ImageModificationManager));
-                    }
-                }
-            );
+            if (path != null)
+            {
+                ImageReader reader = new ImageReader(path);
+
+                reader.Read();
+
+                _imageExportPath = path;
+                Bitmap image = reader.Image;
+                ImageModificationManager = new ImageModificationManager(image);
+
+                RaisePropertyChanged(nameof(ImageModificationManager));
+            }
+        }
+
+        private void OnSaveCommandExecution(object o)
+        {
+            ImageModificationManager.LastModification.Save(_imageExportPath);
+        }
+
+        private void OnSaveAsCommandExecution(object o)
+        {
+            string path = _saveImageDialogService.ShowFileDialog("Save", "Image Files|*.jpg;*.jpeg;*.png;*.bmp");
+
+            if (path != null)
+            {
+                ImageWriter writer = new ImageWriter(path);
+
+                writer.Write(ImageModificationManager.LastModification);
+
+                _imageExportPath = path;
+            }
         }
     }
 }

@@ -6,6 +6,6 @@ namespace SemanticImages.Service
 {
     interface IFileDialogService
     {
-        string RetrievePath();
+        void ShowFileDialog(string title, string filters, Action<string> action);
     }
 }

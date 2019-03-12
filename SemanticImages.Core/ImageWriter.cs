@@ -23,11 +23,11 @@ namespace SemanticImages.Core.IO
             _path = path;
         }
 
-        public void Write(Image image, string path)
+        public void Write(Image image)
         {
-            ImageFormat format = GetImageFormat(path);
+            ImageFormat format = GetImageFormat(_path);
 
-            image.Save(path, format);
+            image.Save(_path, format);
         }
 
         /// <summary>
