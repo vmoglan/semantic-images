@@ -21,7 +21,7 @@ namespace SemanticImages.Service
 
             bool? dialogResult = fileDialog.ShowDialog();
 
-            if (dialogResult.HasValue)
+            if (dialogResult.HasValue && dialogResult.Value)
             {
                 action(fileDialog.FileName);
             }

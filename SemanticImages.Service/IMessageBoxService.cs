@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SemanticImages.Service
 {
-    interface IDialogService
+    interface IMessageBoxService
     {
+
     }
 }

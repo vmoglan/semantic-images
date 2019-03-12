@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SaveImageDialogService.cs" />
+    <Compile Include="IMessageBoxService.cs" />
+    <Compile Include="SaveFileDialogService.cs" />
     <Compile Include="IFileDialogService.cs" />
-    <Compile Include="OpenImageDialogService.cs" />
+    <Compile Include="OpenFileDialogService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

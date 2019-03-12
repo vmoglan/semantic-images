@@ -1,10 +1,11 @@
 ﻿using Microsoft.Win32;
+using System;
 
 namespace SemanticImages.Service
 {
     public class SaveFileDialogService : IFileDialogService
     {
-        public string ShowFileDialog(string title, string filter)
+        public void ShowFileDialog(string title, string filter, Action<string> action)
         {
             SaveFileDialog fileDialog = new SaveFileDialog
             {
@@ -12,7 +13,12 @@ namespace SemanticImages.Service
                 Filter = filter
             };
 
-            return fileDialog.ShowDialog() == true ? fileDialog.FileName : null;
+            bool? dialogResult = fileDialog.ShowDialog();
+
+            if (dialogResult.HasValue && dialogResult.Value)
+            {
+                action(fileDialog.FileName);
+            }
         }
     }
 }

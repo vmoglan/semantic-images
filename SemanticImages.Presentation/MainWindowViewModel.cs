@@ -59,20 +59,19 @@ namespace SemanticImages.Presentation
 
         private void OnOpenCommandExecution(object o)
         {
-            string path = _openImageDialogService.ShowFileDialog("Open", "Image Files|*.jpg;*.jpeg;*.png;*.bmp");
+            _openImageDialogService.ShowFileDialog("Open", "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
+                path =>
+                {
+                    ImageReader reader = new ImageReader(path);
 
-            if (path != null)
-            {
-                ImageReader reader = new ImageReader(path);
+                    reader.Read();
 
-                reader.Read();
+                    _imageExportPath = path;
+                    Bitmap image = reader.Image;
+                    ImageModificationManager = new ImageModificationManager(image);
 
-                _imageExportPath = path;
-                Bitmap image = reader.Image;
-                ImageModificationManager = new ImageModificationManager(image);
-
-                RaisePropertyChanged(nameof(ImageModificationManager));
-            }
+                    RaisePropertyChanged(nameof(ImageModificationManager));
+                });
         }
 
         private void OnSaveCommandExecution(object o)
@@ -82,16 +81,15 @@ namespace SemanticImages.Presentation
 
         private void OnSaveAsCommandExecution(object o)
         {
-            string path = _saveImageDialogService.ShowFileDialog("Save", "Image Files|*.jpg;*.jpeg;*.png;*.bmp");
+            _saveImageDialogService.ShowFileDialog("Save", "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
+                path =>
+                {
+                    ImageWriter writer = new ImageWriter(path);
 
-            if (path != null)
-            {
-                ImageWriter writer = new ImageWriter(path);
+                    writer.Write(ImageModificationManager.LastModification);
 
-                writer.Write(ImageModificationManager.LastModification);
-
-                _imageExportPath = path;
-            }
+                    _imageExportPath = path;
+                });
         }
     }
 }

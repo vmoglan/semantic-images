@@ -25,8 +25,8 @@ namespace SemanticImages.View
 
         private static void ComposeObjects()
         {
-            OpenImageDialogService openImageDialogService = new OpenImageDialogService();
-            SaveImageDialogService saveImageDialogService = new SaveImageDialogService();
+            OpenFileDialogService openImageDialogService = new OpenFileDialogService();
+            SaveFileDialogService saveImageDialogService = new SaveFileDialogService();
             MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(openImageDialogService, saveImageDialogService);
             MainWindow mainWindow = new MainWindow(mainWindowViewModel);
             Current.MainWindow = mainWindow;
