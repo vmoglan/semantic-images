@@ -3,14 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SemanticImages.View"
-        mc:Ignorable="d"
-        Title="SemIm" Height="450" Width="800"
-        DataContext="{Binding ViewModel}">
+        xmlns:presentation="clr-namespace:SemanticImages.Presentation;assembly=SemanticImages.Presentation"
+        mc:Ignorable="d"        
+        d:DataContext="{d:DesignInstance Type=presentation:MainWindowViewModel, IsDesignTimeCreatable=True}"
+        Title="SemIm" Height="450" Width="800" Background="Black">
+
+    <Window.Resources>
+        <presentation:ImageSourceConverter x:Key="imageSourceConverter" />
+    </Window.Resources>
+
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Open"
+                          Command="{Binding OpenCommand}"/>
                 <MenuItem Header="_Save"/>
                 <MenuItem Header="Save As"/>
                 <MenuItem Header="Quit" />
@@ -22,8 +28,10 @@
                 <MenuItem Header="Undo All" />
             </MenuItem>
         </Menu>
-        <StackPanel x:Name="ImageContainer">
-            <Image Height="100" Width="100"/>
+        <StackPanel x:Name="ImageContainer" DataContext="{Binding}" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Image Source="{Binding ImageModificationManager.LastModification, Converter={StaticResource imageSourceConverter}}"
+                   Stretch="Uniform" 
+                   StretchDirection="DownOnly" HorizontalAlignment="Center" />
         </StackPanel>
     </DockPanel>
 </Window>

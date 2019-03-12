@@ -1,5 +1,6 @@
 ﻿using SemanticImages.Core;
 using SemanticImages.Presentation;
+using SemanticImages.Service;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,7 +25,9 @@ namespace SemanticImages.View
 
         private static void ComposeObjects()
         {
-            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+            OpenImageDialogService openImageDialogService = new OpenImageDialogService();
+            SaveImageDialogService saveImageDialogService = new SaveImageDialogService();
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(openImageDialogService, saveImageDialogService);
             MainWindow mainWindow = new MainWindow(mainWindowViewModel);
             Current.MainWindow = mainWindow;
         }

@@ -23,6 +23,7 @@ namespace SemanticImages.Core
             _history = new Stack<Bitmap>();
 
             _history.Push(sourceImage);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LastModification)));
         }
 
         public void Resize(int width, int height)

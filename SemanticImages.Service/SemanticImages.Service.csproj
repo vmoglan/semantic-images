@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}</ProjectGuid>
+    <ProjectGuid>{95F117BF-DB68-4189-A722-BA41B3AAD0C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SemanticImages.Core</RootNamespace>
-    <AssemblyName>SemanticImages.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>SemanticImages.Service</RootNamespace>
+    <AssemblyName>SemanticImages.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -42,12 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImageModificationManager.cs" />
-    <Compile Include="ImageReader.cs" />
-    <Compile Include="ImageWriter.cs" />
-    <Compile Include="MathUtils.cs" />
+    <Compile Include="SaveImageDialogService.cs" />
+    <Compile Include="IFileDialogService.cs" />
+    <Compile Include="OpenImageDialogService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ImageUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -107,6 +107,10 @@
       <Project>{a4a0adb3-f244-4b6e-bc31-6db17ee4bd32}</Project>
       <Name>SemanticImages.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SemanticImages.Service\SemanticImages.Service.csproj">
+      <Project>{95f117bf-db68-4189-a722-ba41b3aad0c2}</Project>
+      <Name>SemanticImages.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

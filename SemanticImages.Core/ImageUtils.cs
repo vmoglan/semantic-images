@@ -102,48 +102,6 @@ namespace SemanticImages.Core
         }
 
         /// <summary>
-        /// Converts an array of bytes into a bitmap image.
-        /// </summary>
-        /// <param name="bytes">the array of bytes containing image information</param>
-        /// <returns>the bitmap generated from the array of bytes</returns>
-        public static Bitmap BytesToImage(byte[] bytes)
-        {
-            MemoryStream ms = new MemoryStream(bytes);
-            Image image = Image.FromStream(ms, false, true);
-
-            return new Bitmap(image);
-        }
-
-        /// <summary>
-        /// Given the path to an image, determines the corresponding image format.
-        /// </summary>
-        /// <param name="path">is a path to an image</param>
-        /// <returns>the image format</returns>
-        public static ImageFormat GetImageFormat(string path)
-        {
-            string formatStr = Path.GetExtension(path).Replace(".", "");
-            ImageFormat format = null;
-
-            switch (formatStr.ToLower())
-            {
-                case "jpg":
-                case "jpeg":
-                    format = ImageFormat.Jpeg;
-                    break;
-                case "png":
-                    format = ImageFormat.Png;
-                    break;
-                case "bmp":
-                    format = ImageFormat.Bmp;
-                    break;
-                default:
-                    throw new ArgumentException("Not a path to an image.");
-            }
-
-            return format;
-        }
-
-        /// <summary>
         /// Validates the bounds of a rectangle for cropping 
         /// </summary>
         /// <param name="r"></param>
