@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,6 +60,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Navigation\MessageBoxService.cs" />
+    <Compile Include="Navigation\FileDialogService.cs" />
+    <Compile Include="ResizeUserControl.xaml.cs">
+      <DependentUpon>ResizeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ResizeWindow.xaml.cs">
+      <DependentUpon>ResizeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\ResizeWindowService.cs" />
+    <Compile Include="ScaleUserControl.xaml.cs">
+      <DependentUpon>ScaleUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,6 +84,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ResizeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResizeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScaleUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -108,7 +133,7 @@
       <Name>SemanticImages.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\SemanticImages.Service\SemanticImages.Service.csproj">
-      <Project>{95f117bf-db68-4189-a722-ba41b3aad0c2}</Project>
+      <Project>{0567ec64-912b-4cb0-b2fc-40a1adb17570}</Project>
       <Name>SemanticImages.Service</Name>
     </ProjectReference>
   </ItemGroup>

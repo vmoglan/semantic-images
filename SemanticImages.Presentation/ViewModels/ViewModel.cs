@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SemanticImages.Presentation
+namespace SemanticImages.Presentation.ViewModel
 {
     public class ViewModel : INotifyPropertyChanged
     {

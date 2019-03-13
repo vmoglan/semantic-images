@@ -4,14 +4,13 @@ using System.Windows;
 namespace SemanticImages.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ResizeWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ResizeWindow : Window
     {
-        public MainWindow(MainWindowViewModel viewModel)
+        public ResizeWindow(ResizeWindowViewModel viewModel)
         {
             InitializeComponent();
-            
             DataContext = viewModel;
         }
     }

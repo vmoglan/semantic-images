@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImageModificationManager.cs" />
     <Compile Include="ImageReader.cs" />
     <Compile Include="ImageWriter.cs" />
     <Compile Include="MathUtils.cs" />

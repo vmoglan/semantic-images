@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:presentation="clr-namespace:SemanticImages.Presentation;assembly=SemanticImages.Presentation"
+        xmlns:conv="clr-namespace:SemanticImages.Presentation.Converter;assembly=SemanticImages.Presentation"
+        xmlns:vm="clr-namespace:SemanticImages.Presentation.ViewModel;assembly=SemanticImages.Presentation"
         mc:Ignorable="d"        
-        d:DataContext="{d:DesignInstance Type=presentation:MainWindowViewModel, IsDesignTimeCreatable=True}"
+        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}"
         Title="SemIm" Height="450" Width="800" Background="White">
 
     <Window.Resources>
-        <presentation:ImageSourceConverter x:Key="imageSourceConverter" />
+        <conv:ImageSourceConverter x:Key="imageSourceConverter" />
     </Window.Resources>
 
     <DockPanel>
@@ -24,14 +25,14 @@
                 <MenuItem Header="Quit" />
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Resize"/>
+                <MenuItem Header="Resize"
+                          Command="{Binding ResizeCommand}"/>
                 <MenuItem Header="Crop" />
                 <MenuItem Header="Undo" />
                 <MenuItem Header="Undo All" />
             </MenuItem>
         </Menu>
-        <StackPanel DataContext="{Binding ImageModificationManager}" 
-                    x:Name="ImageContainer" 
+        <StackPanel x:Name="ImageContainer" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center">
             <Image Source="{Binding LastModification, Converter={StaticResource imageSourceConverter}}"

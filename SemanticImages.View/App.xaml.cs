@@ -1,12 +1,6 @@
-﻿using SemanticImages.Core;
-using SemanticImages.Presentation;
-using SemanticImages.Service;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using SemanticImages.Presentation.ViewModel;
+using SemanticImages.Service.Navigation;
+using SemanticImages.View.Service;
 using System.Windows;
 
 namespace SemanticImages.View
@@ -25,11 +19,10 @@ namespace SemanticImages.View
 
         private static void ComposeObjects()
         {
-            OpenFileDialogService openImageDialogService = new OpenFileDialogService();
-            SaveFileDialogService saveImageDialogService = new SaveFileDialogService();
+            IFileDialogService fileDialogService = new FileDialogService();
             IMessageBoxService messageBoxService = new MessageBoxService();
-            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(openImageDialogService, 
-                saveImageDialogService, messageBoxService);
+            IResizeWindowService resizeWindowService = new ResizeWindowService();
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(resizeWindowService, fileDialogService, messageBoxService);
             MainWindow mainWindow = new MainWindow(mainWindowViewModel);
             Current.MainWindow = mainWindow;
         }
