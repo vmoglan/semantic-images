@@ -6,7 +6,7 @@ using System.Windows;
 namespace SemanticImages.View
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Bootstrapper
     /// </summary>
     public partial class App : Application
     {
@@ -16,7 +16,7 @@ namespace SemanticImages.View
             ComposeObjects();
             Current.MainWindow.Show();
         }
-
+        
         private static void ComposeObjects()
         {
             IFileDialogService fileDialogService = new FileDialogService();

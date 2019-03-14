@@ -46,7 +46,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ViewModels\ResizeUserControlViewModel.cs" />
     <Compile Include="ViewModels\ResizeWindowViewModel.cs" />
     <Compile Include="ViewModels\ScaleUserControlViewModel.cs" />

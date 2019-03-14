@@ -59,15 +59,7 @@ namespace SemanticImages.Presentation.ViewModels
             OpenCommand = new RelayCommand(o => true, o => OnOpenCommandExecution(o));
             SaveCommand = new RelayCommand(o => _history.Count > 0, o => OnSaveCommandExecution(o));
             SaveAsCommand = new RelayCommand(o => _history.Count > 0, o => OnSaveAsCommandExecution(o));
-            ResizeCommand = new RelayCommand(o => _history.Count > 0, o => _resizeWindowService.ShowResizeWindow(
-                _messageBoxService,
-                LastModification,
-                im =>
-                {
-                    _history.Push(im);
-                    RaisePropertyChanged(nameof(LastModification));
-                }
-                ));
+            ResizeCommand = new RelayCommand(o => _history.Count > 0, o => OnResizeCommandExecution(o));
         }
 
         private void OnOpenCommandExecution(object o)
@@ -109,6 +101,19 @@ namespace SemanticImages.Presentation.ViewModels
 
                     _imageExportPath = path;
                 });
+        }
+
+        private void OnResizeCommandExecution(object o)
+        {
+            _resizeWindowService.ShowResizeWindow(
+                _messageBoxService,
+                LastModification,
+                im =>
+                {
+                    _history.Push(im);
+                    RaisePropertyChanged(nameof(LastModification));
+                }
+            );
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
+/// <summary>
+/// A base class for any view model. Raises property change events.
+/// </summary>
 namespace SemanticImages.Presentation.ViewModels
 {
     public abstract class ViewModelBase : INotifyPropertyChanged

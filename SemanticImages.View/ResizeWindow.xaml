@@ -20,8 +20,6 @@
         <DataTemplate x:Key="ScaleTemplate" DataType="{x:Type local:ScaleUserControl}">
             <local:ScaleUserControl />
         </DataTemplate>
-
-        <conv:BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
     </Window.Resources>
 
     <Grid>

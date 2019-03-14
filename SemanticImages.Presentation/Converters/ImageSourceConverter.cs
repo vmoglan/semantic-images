@@ -7,6 +7,10 @@ using System.Windows.Media.Imaging;
 
 namespace SemanticImages.Presentation.ValueConversion
 {
+    /// <summary>
+    ///  Used for converting an instance of the <code>Bitmap</code> class to an image source that
+    ///  can be displayed within an <code>Image</code> window control.
+    /// </summary>
     public class ImageSourceConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
