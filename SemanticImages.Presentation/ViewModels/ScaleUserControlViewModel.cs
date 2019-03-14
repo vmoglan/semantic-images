@@ -1,6 +1,6 @@
 ﻿namespace SemanticImages.Presentation.ViewModels
 {
-    public class ScaleUserControlViewModel : ViewModel
+    public class ScaleUserControlViewModel : ViewModelBase
     {
         private float _scale;
 

@@ -5,10 +5,11 @@ using System.Drawing;
 
 namespace SemanticImages.Presentation.ViewModels
 {
-    public class ResizeWindowViewModel : ViewModel
+    public class ResizeWindowViewModel : WorkspaceViewModel
     {
         private readonly Bitmap _imageIn;
         private readonly Action<Bitmap> _onResize;
+        private readonly IMessageBoxService _messageBoxService;
 
         public Bitmap ImageOut
         {
@@ -28,9 +29,9 @@ namespace SemanticImages.Presentation.ViewModels
             }
         }
 
-        private ViewModel _activeChildViewModel;
+        private ViewModelBase _activeChildViewModel;
 
-        public ViewModel ActiveChildViewModel
+        public ViewModelBase ActiveChildViewModel
         {
             get => _activeChildViewModel;
             private set
@@ -108,36 +109,35 @@ namespace SemanticImages.Presentation.ViewModels
             IsVisible = true;
             _imageIn = imageIn;
             _onResize = onResize;
+            _messageBoxService = messageBoxService;
             MaintainAspectRatio = true;
-            ApplyCommand = new RelayCommand(o => true,
+            ApplyCommand = new RelayCommand(o => CanClose(),
                 o =>
                 {
                     if (ActiveChildViewModel is ScaleUserControlViewModel)
                     {
                         try
                         {
-                            onResize(ImageUtils.Resize(_imageIn, ScaleUserControlViewModel.Scale));
-
-                            IsVisible = false;
+                            _onResize(ImageUtils.Resize(_imageIn, ScaleUserControlViewModel.Scale));
+                            Close();
                         }
 
                         catch (Exception e)
                         {
-                            messageBoxService.ShowErrorMessageBox(e.Message);
+                            _messageBoxService.ShowErrorMessageBox(e.Message);
                         }
                     }
                     else
                     {
                         try
                         {
-                            onResize(ImageUtils.Resize(_imageIn, ResizeUserControlViewModel.Width,
+                            _onResize(ImageUtils.Resize(_imageIn, ResizeUserControlViewModel.Width,
                                 ResizeUserControlViewModel.Height));
-
-                            IsVisible = false;
-                        } 
+                            Close();
+                        }
                         catch (Exception e)
                         {
-                            messageBoxService.ShowErrorMessageBox(e.Message);
+                            _messageBoxService.ShowErrorMessageBox(e.Message);
                         }
                     }
                 });

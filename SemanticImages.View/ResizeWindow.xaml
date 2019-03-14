@@ -64,7 +64,8 @@
                 />
             <Button Content="Cancel" 
                 HorizontalAlignment="Right"
-                Grid.Row="3" Grid.Column="1"/>
+                Grid.Row="3" Grid.Column="1"
+                Command="{Binding CloseCommand}"/>
         </Grid>
     </Grid>
 </Window>

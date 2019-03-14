@@ -12,6 +12,7 @@ namespace SemanticImages.View
         {
             InitializeComponent();
             DataContext = viewModel;
+            viewModel.RequestClose += () => { Close(); };
         }
     }
 }

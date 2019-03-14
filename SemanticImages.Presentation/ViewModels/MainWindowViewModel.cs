@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace SemanticImages.Presentation.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
         private Stack<Bitmap> _history;
 
@@ -62,7 +62,11 @@ namespace SemanticImages.Presentation.ViewModels
             ResizeCommand = new RelayCommand(o => _history.Count > 0, o => _resizeWindowService.ShowResizeWindow(
                 _messageBoxService,
                 LastModification,
-                im => _history.Push(im)
+                im =>
+                {
+                    _history.Push(im);
+                    RaisePropertyChanged(nameof(LastModification));
+                }
                 ));
         }
 

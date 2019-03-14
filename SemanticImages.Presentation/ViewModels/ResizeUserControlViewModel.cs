@@ -1,6 +1,6 @@
 ﻿namespace SemanticImages.Presentation.ViewModels
 {
-    public class ResizeUserControlViewModel : ViewModel
+    public class ResizeUserControlViewModel : ViewModelBase
     {
         private int _width;
 
