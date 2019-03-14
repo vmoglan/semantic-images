@@ -1,4 +1,4 @@
-﻿namespace SemanticImages.Presentation.ViewModel
+﻿namespace SemanticImages.Presentation.ViewModels
 {
     public class ResizeUserControlViewModel : ViewModel
     {

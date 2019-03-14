@@ -5,7 +5,7 @@ using System.IO;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace SemanticImages.Presentation.Converter
+namespace SemanticImages.Presentation.ValueConversion
 {
     public class ImageSourceConverter : IValueConverter
     {

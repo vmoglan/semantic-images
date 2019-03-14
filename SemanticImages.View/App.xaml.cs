@@ -1,4 +1,4 @@
-﻿using SemanticImages.Presentation.ViewModel;
+﻿using SemanticImages.Presentation.ViewModels;
 using SemanticImages.Service.Navigation;
 using SemanticImages.View.Service;
 using System.Windows;

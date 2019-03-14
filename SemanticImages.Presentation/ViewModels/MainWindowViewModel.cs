@@ -4,7 +4,7 @@ using SemanticImages.Service.Navigation;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace SemanticImages.Presentation.ViewModel
+namespace SemanticImages.Presentation.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {
