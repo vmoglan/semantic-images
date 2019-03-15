@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prokim.Core", "Prokim.Core\Prokim.Core.csproj", "{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prokim.Core.Tests", "Prokim.Core.Tests\Prokim.Core.Tests.csproj", "{0C45A195-F39E-4500-82BC-B9848FF9EDAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prokim.View", "Prokim.View\Prokim.View.csproj", "{9C7E4AC4-31D2-4203-AC02-F5C98331A211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prokim.Presentation", "Prokim.Presentation\Prokim.Presentation.csproj", "{A4A0ADB3-F244-4B6E-BC31-6DB17EE4BD32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prokim.Service", "Prokim.Service\Prokim.Service.csproj", "{0567EC64-912B-4CB0-B2FC-40A1ADB17570}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0127E53-ECB9-4A21-B44C-3F1529FCD0A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C45A195-F39E-4500-82BC-B9848FF9EDAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C45A195-F39E-4500-82BC-B9848FF9EDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C45A195-F39E-4500-82BC-B9848FF9EDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C45A195-F39E-4500-82BC-B9848FF9EDAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7E4AC4-31D2-4203-AC02-F5C98331A211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7E4AC4-31D2-4203-AC02-F5C98331A211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7E4AC4-31D2-4203-AC02-F5C98331A211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7E4AC4-31D2-4203-AC02-F5C98331A211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4A0ADB3-F244-4B6E-BC31-6DB17EE4BD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4A0ADB3-F244-4B6E-BC31-6DB17EE4BD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4A0ADB3-F244-4B6E-BC31-6DB17EE4BD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4A0ADB3-F244-4B6E-BC31-6DB17EE4BD32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0567EC64-912B-4CB0-B2FC-40A1ADB17570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0567EC64-912B-4CB0-B2FC-40A1ADB17570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0567EC64-912B-4CB0-B2FC-40A1ADB17570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0567EC64-912B-4CB0-B2FC-40A1ADB17570}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB3F2E83-EB7E-4E6C-92D8-6292DE7C61BF}
+	EndGlobalSection
+EndGlobal
