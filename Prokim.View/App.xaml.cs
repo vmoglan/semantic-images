@@ -21,8 +21,7 @@ namespace Prokim.View
         {
             IFileDialogService fileDialogService = new FileDialogService();
             IMessageBoxService messageBoxService = new MessageBoxService();
-            IResizeWindowService resizeWindowService = new ResizeWindowService();
-            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(resizeWindowService, fileDialogService, messageBoxService);
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(fileDialogService, messageBoxService);
             MainWindow mainWindow = new MainWindow(mainWindowViewModel);
             Current.MainWindow = mainWindow;
         }

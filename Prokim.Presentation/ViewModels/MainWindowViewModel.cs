@@ -1,4 +1,5 @@
-﻿using Prokim.Core;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using Prokim.Core.IO;
 using Prokim.Service.Navigation;
 using System.Collections.Generic;
@@ -20,7 +21,6 @@ namespace Prokim.Presentation.ViewModels
 
         private readonly IFileDialogService _fileDialogService;
         private readonly IMessageBoxService _messageBoxService;
-        private readonly IResizeWindowService _resizeWindowService;
 
         public RelayCommand OpenCommand
         {
@@ -44,25 +44,25 @@ namespace Prokim.Presentation.ViewModels
 
         public MainWindowViewModel() { }
 
-        public MainWindowViewModel(IResizeWindowService resizeWindowService, IFileDialogService fileDialogService, IMessageBoxService messageBoxService)
+        public MainWindowViewModel(IFileDialogService fileDialogService, IMessageBoxService messageBoxService)
         {
             _history = new Stack<Bitmap>();
             _fileDialogService = fileDialogService;
             _messageBoxService = messageBoxService;
-            _resizeWindowService = resizeWindowService;
             
             InitializeCommands();
         }
 
         private void InitializeCommands()
         {
-            OpenCommand = new RelayCommand(o => true, o => OnOpenCommandExecution(o));
-            SaveCommand = new RelayCommand(o => _history.Count > 0, o => OnSaveCommandExecution(o));
-            SaveAsCommand = new RelayCommand(o => _history.Count > 0, o => OnSaveAsCommandExecution(o));
-            ResizeCommand = new RelayCommand(o => _history.Count > 0, o => OnResizeCommandExecution(o));
+            OpenCommand = new RelayCommand(() => OnOpenCommandExecution(), true);
+            SaveCommand = new RelayCommand(() => OnSaveCommandExecution(), 
+                () => _history.Count > 0, true);
+            SaveAsCommand = new RelayCommand(() => OnSaveAsCommandExecution(), 
+                () => _history.Count > 0, true);
         }
 
-        private void OnOpenCommandExecution(object o)
+        private void OnOpenCommandExecution()
         {
             _fileDialogService.ShowOpenFileDialog("Open", "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
                 path =>
@@ -81,7 +81,7 @@ namespace Prokim.Presentation.ViewModels
                 });
         }
 
-        private void OnSaveCommandExecution(object o)
+        private void OnSaveCommandExecution()
         {
             _messageBoxService.ShowWarningMessageBox("This operation will override the currently loaded file.", "Save",
                 r =>
@@ -90,7 +90,7 @@ namespace Prokim.Presentation.ViewModels
                 });
         }
 
-        private void OnSaveAsCommandExecution(object o)
+        private void OnSaveAsCommandExecution()
         {
             _fileDialogService.ShowSaveFileDialog("Save", "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
                 path =>
@@ -101,19 +101,6 @@ namespace Prokim.Presentation.ViewModels
 
                     _imageExportPath = path;
                 });
-        }
-
-        private void OnResizeCommandExecution(object o)
-        {
-            _resizeWindowService.ShowResizeWindow(
-                _messageBoxService,
-                LastModification,
-                im =>
-                {
-                    _history.Push(im);
-                    RaisePropertyChanged(nameof(LastModification));
-                }
-            );
         }
     }
 }
