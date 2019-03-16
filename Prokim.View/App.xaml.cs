@@ -1,6 +1,7 @@
-﻿using Prokim.Presentation.ViewModels;
+﻿using GalaSoft.MvvmLight.Threading;
+using Prokim.Presentation.ViewModels;
 using Prokim.Service.Navigation;
-using Prokim.View.Service;
+using Prokim.View.Navigation;
 using System.Windows;
 
 namespace Prokim.View
@@ -10,20 +11,9 @@ namespace Prokim.View
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        static App()
         {
-            base.OnStartup(e);
-            ComposeObjects();
-            Current.MainWindow.Show();
-        }
-        
-        private static void ComposeObjects()
-        {
-            IFileDialogService fileDialogService = new FileDialogService();
-            IMessageBoxService messageBoxService = new MessageBoxService();
-            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel(fileDialogService, messageBoxService);
-            MainWindow mainWindow = new MainWindow(mainWindowViewModel);
-            Current.MainWindow = mainWindow;
+            DispatcherHelper.Initialize();
         }
     }
 }

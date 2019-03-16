@@ -60,7 +60,7 @@
   <ItemGroup>
     <Compile Include="Navigation\IFileDialogService.cs" />
     <Compile Include="Navigation\IMessageBoxService.cs" />
-    <Compile Include="Navigation\IResizeWindowService.cs" />
+    <Compile Include="Navigation\INavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

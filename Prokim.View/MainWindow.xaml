@@ -4,10 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:conv="clr-namespace:Prokim.Presentation.ValueConversion;assembly=Prokim.Presentation"
-        xmlns:vm="clr-namespace:Prokim.Presentation.ViewModels;assembly=Prokim.Presentation"
         mc:Ignorable="d"        
-        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}"
-        Title="Prokim" Height="450" Width="800" Background="White">
+        Title="Prokim" Height="450" Width="800" Background="White"
+        DataContext="{Binding Main, Source={StaticResource ViewModelLocator}}">
 
     <Window.Resources>
         <conv:ImageSourceConverter x:Key="imageSourceConverter" />

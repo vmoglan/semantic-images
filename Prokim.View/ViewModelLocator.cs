@@ -13,9 +13,13 @@
 */
 
 using CommonServiceLocator;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using Prokim.Presentation.ViewModels;
+using Prokim.Service.Navigation;
+using Prokim.View.Navigation;
 
-namespace Prokim.Presentation.ViewModels
+namespace Prokim.View
 {
     /// <summary>
     /// This class contains static references to all the view models in the
@@ -30,27 +34,18 @@ namespace Prokim.Presentation.ViewModels
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
-            ///
+            if (!ViewModelBase.IsInDesignModeStatic)
+            {
+                SimpleIoc.Default.Register<IFileDialogService, FileDialogService>();
+                SimpleIoc.Default.Register<IMessageBoxService, MessageBoxService>();
+            }
 
             SimpleIoc.Default.Register<MainWindowViewModel>();
         }
 
         public MainWindowViewModel Main
         {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainWindowViewModel>();
-            }
+            get { return ServiceLocator.Current.GetInstance<MainWindowViewModel>(); }
         }
         
         public static void Cleanup()

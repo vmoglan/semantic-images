@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 
-namespace Prokim.View.Service
+namespace Prokim.View.Navigation
 {
     public class MessageBoxService : IMessageBoxService
     {

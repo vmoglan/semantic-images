@@ -4,7 +4,6 @@ using Prokim.Core.IO;
 using Prokim.Service.Navigation;
 using System.Collections.Generic;
 using System.Drawing;
-
 namespace Prokim.Presentation.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
@@ -22,27 +21,13 @@ namespace Prokim.Presentation.ViewModels
         private readonly IFileDialogService _fileDialogService;
         private readonly IMessageBoxService _messageBoxService;
 
-        public RelayCommand OpenCommand
-        {
-            get; private set;
-        }
+        public RelayCommand OpenCommand { get; private set; }
 
-        public RelayCommand SaveCommand
-        {
-            get; private set;
-        }
+        public RelayCommand SaveCommand { get; private set; }
 
-        public RelayCommand SaveAsCommand
-        {
-            get; private set;
-        }
+        public RelayCommand SaveAsCommand { get; private set; }
 
-        public RelayCommand ResizeCommand
-        {
-            get; private set;
-        }
-
-        public MainWindowViewModel() { }
+        public RelayCommand ResizeCommand { get; private set; }
 
         public MainWindowViewModel(IFileDialogService fileDialogService, IMessageBoxService messageBoxService)
         {

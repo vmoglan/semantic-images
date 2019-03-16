@@ -2,7 +2,7 @@
 using System;
 using Prokim.Service.Navigation;
 
-namespace Prokim.View.Service
+namespace Prokim.View.Navigation
 {
     public class FileDialogService : IFileDialogService
     {
